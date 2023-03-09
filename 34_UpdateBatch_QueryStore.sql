@@ -37,12 +37,12 @@ LEFT JOIN sys.query_store_wait_stats ws
 	AND ws.plan_id = qrs.plan_id
 WHERE
 	qsq.object_id IN( OBJECT_ID('Testing.UpdateContention_UpdateAll'), 
-		OBJECT_ID('Testing.UpdateContention_Halloween'), 
+		OBJECT_ID('Testing.UpdateContention_Selective'), 
 			OBJECT_ID('Testing.UpdateContention_ManualHalloween'))
 	AND qsi.start_time > DATEADD(day, -1, GETUTCDATE()) 
 	--AND qt.query_sql_text like '%Something%'
 ORDER BY
-	ProcedureName,
+	query_id,
 	avg_duration
 
 	

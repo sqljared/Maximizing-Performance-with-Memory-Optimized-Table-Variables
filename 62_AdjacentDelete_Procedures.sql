@@ -67,9 +67,10 @@ BEGIN
 		
 	INSERT INTO @CustomerTransactionList
 	SELECT --TOP (@BatchSize) 
+		ct.TransactionDate,
 		ct.CustomerTransactionID
 	FROM @InvoiceList list
-	INNER JOIN Sales.CustomerTransactions ct
+	INNER LOOP JOIN Sales.CustomerTransactions ct
 		ON ct.InvoiceID = list.InvoiceID;
 		
 	DELETE invl
@@ -80,7 +81,8 @@ BEGIN
 	DELETE ct
 	FROM @CustomerTransactionList list
 	INNER LOOP JOIN Sales.CustomerTransactions ct
-		ON ct.CustomerTransactionID = list.CustomerTransactionID;
+		ON ct.TransactionDate = list.TransactionDate
+		AND ct.CustomerTransactionID = list.CustomerTransactionID;
 
 	DELETE inv
 	FROM @InvoiceList list

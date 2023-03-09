@@ -16,7 +16,7 @@ SELECT
 	qrs.avg_cpu_time,
 	qrs.avg_logical_io_reads,
 	qrs.count_executions,
-	qsi.start_time
+	avg_rowcount
 FROM sys.query_store_query qsq
 JOIN sys.query_store_query_text qt
 	ON qt.query_text_id = qsq.query_text_id

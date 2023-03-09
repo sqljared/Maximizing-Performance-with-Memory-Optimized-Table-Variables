@@ -45,7 +45,7 @@ BEGIN
 END;
 GO
 
-CREATE OR ALTER PROCEDURE Testing.UpdateContention_Halloween
+CREATE OR ALTER PROCEDURE Testing.UpdateContention_Selective
 	@OrderLineInput Sales.OrderLineTVP READONLY,
 	@UserID INT = 0
 	WITH EXECUTE AS OWNER

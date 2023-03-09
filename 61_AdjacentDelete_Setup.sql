@@ -40,8 +40,9 @@ IF NOT EXISTS(
 BEGIN
 	CREATE TYPE MemoryOptimized.CustomerTransactionIDList
 	AS TABLE(
+		TransactionDate DATE,
 		CustomerTransactionID INT,
-		INDEX UQ_CustomerTransactionIDList UNIQUE NONCLUSTERED (CustomerTransactionID)
+		INDEX UQ_CustomerTransactionIDList UNIQUE NONCLUSTERED (TransactionDate, CustomerTransactionID)
 	)WITH(MEMORY_OPTIMIZED = ON); 
 END;
 GO

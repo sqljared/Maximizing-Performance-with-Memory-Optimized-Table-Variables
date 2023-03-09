@@ -1,5 +1,7 @@
 USE AdventureWorks2014
 GO
+ALTER DATABASE AdventureWorks2014 SET QUERY_STORE CLEAR;
+GO
 SET NOCOUNT ON;
 go
 DECLARE
@@ -18,8 +20,8 @@ FROM Sales.SalesOrderDetail sod
 WHERE
 	sod.SalesOrderID = @SalesOrderID;
 
-SELECT * 
-FROM @Updates;
+--SELECT * 
+--FROM @Updates;
 
 BEGIN TRANSACTION;
 
@@ -28,13 +30,13 @@ BEGIN TRANSACTION;
 		@Updates = @Updates,
 		@UpdateType = @UpdateType;
 
-	SELECT @RowsAffected AS RowsAffected;
+	--SELECT @RowsAffected AS RowsAffected;
 
-	SELECT 	*
-	FROM @Updates tvp
-	JOIN Sales.SalesOrderDetail sod
-		ON sod.ProductID = tvp.ProductID
-		AND sod.SalesOrderID = @SalesOrderID;
+	--SELECT 	*
+	--FROM @Updates tvp
+	--JOIN Sales.SalesOrderDetail sod
+	--	ON sod.ProductID = tvp.ProductID
+	--	AND sod.SalesOrderID = @SalesOrderID;
 
 ROLLBACK TRANSACTION;
 
@@ -50,13 +52,13 @@ BEGIN TRANSACTION;
 		@Updates = @Updates,
 		@UpdateType = @UpdateType;
 
-	SELECT @RowsAffectedMod AS RowsAffected;
+	--SELECT @RowsAffectedMod AS RowsAffected;
 
-	SELECT 	*
-	FROM @Updates tvp
-	JOIN Sales.SalesOrderDetail sod
-		ON sod.ProductID = tvp.ProductID
-		AND sod.SalesOrderID = @SalesOrderID;
+	--SELECT 	*
+	--FROM @Updates tvp
+	--JOIN Sales.SalesOrderDetail sod
+	--	ON sod.ProductID = tvp.ProductID
+	--	AND sod.SalesOrderID = @SalesOrderID;
 
 ROLLBACK TRANSACTION;
 GO 10

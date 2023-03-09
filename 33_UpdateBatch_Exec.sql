@@ -58,7 +58,7 @@ ROLLBACK TRANSACTION
 
 BEGIN TRANSACTION
 	
-	EXEC Testing.UpdateContention_Halloween
+	EXEC Testing.UpdateContention_Selective
 		@OrderLineInput = @OrderLineInput,
 		@UserID = @UserID;
 

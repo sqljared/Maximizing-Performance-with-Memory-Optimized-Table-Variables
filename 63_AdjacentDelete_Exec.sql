@@ -1,5 +1,7 @@
 USE WideWorldImporters
 GO
+ALTER DATABASE WideWorldImporters SET QUERY_STORE CLEAR;
+GO
 
 BEGIN TRANSACTION
 
