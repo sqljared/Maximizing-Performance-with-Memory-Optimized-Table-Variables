@@ -2,4 +2,4 @@ USE WideWorldImporters
 GO
 EXEC Testing.OrderLines_WipeAndReplaceWrapper;
 EXEC Testing.OrderLines_WipeAndReplaceWrapperv2;
-GO
+GO 10

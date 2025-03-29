@@ -10,12 +10,15 @@ SELECT TOP 100
 FROM Sales.Orders so
 WHERE so.OrderID > @SeedID;
 
-	
+-- We really don't want it to work in this order.
+
 --SELECT *
 --FROM Sales.Orders so
 --INNER JOIN @OrderTVP tvp
 --	ON so.OrderID = tvp.IntValue
 --OPTION(FORCE ORDER);
+
+-- MOTV acts as our filter, let's query it first.
 
 SELECT *
 FROM @OrderTVP tvp

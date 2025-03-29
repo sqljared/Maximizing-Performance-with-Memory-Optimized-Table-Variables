@@ -7,6 +7,7 @@ GO
 SELECT 
 	qsq.query_id,
 	OBJECT_NAME(object_id) AS ProcedureName,
+	CAST(qsp.query_plan AS XML) as query_plan,
 	qt.query_sql_text,
 	sum(qrs.avg_duration * qrs.count_executions) AS total_duration,
 	sum(qrs.count_executions) AS total_executions,
@@ -35,6 +36,7 @@ WHERE
 GROUP BY
 	qsq.query_id,
 	OBJECT_NAME(object_id),
+	qsp.query_plan,
 	qt.query_sql_text
 ORDER BY
 	qt.query_sql_text

@@ -7,8 +7,10 @@ GO
 SELECT 
 	qsq.query_id,
 	OBJECT_NAME(object_id) AS ProcedureName,
+	CAST(qsp.query_plan AS XML) as query_plan,
 	qt.query_sql_text,
 	qsp.plan_id,
+	qrs.avg_duration * qrs.count_executions AS total_duration,
 	qrs.avg_duration,
 	qrs.avg_cpu_time,
 	qrs.count_executions,

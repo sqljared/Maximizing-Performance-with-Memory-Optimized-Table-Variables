@@ -52,26 +52,26 @@ DECLARE
 	@Price MONEY,
 	@Quantity INT;
 
-DECLARE 
-	@InsertCount INT = 0,
-	@InsertLimit INT = 100000;
+--DECLARE 
+--	@InsertCount INT = 0,
+--	@InsertLimit INT = 100000;
 
-SET NOCOUNT ON;
+--SET NOCOUNT ON;
 
-WHILE @InsertCount < @InsertLimit
-BEGIN
-	-- Inserting 1 record into InsertContention
-	SET @TransactionCode = RIGHT(CONVERT(varchar(255), NEWID()),20);
-	SET @InsertDateGMT = DATEADD(DAY, -FLOOR(RAND() * 1000),GETUTCDATE());
-	SET @Price = RAND() * 100;
-	SET @Quantity = FLOOR(RAND() * 10);
+--WHILE @InsertCount < @InsertLimit
+--BEGIN
+--	-- Inserting 1 record into InsertContention
+--	SET @TransactionCode = RIGHT(CONVERT(varchar(255), NEWID()),20);
+--	SET @InsertDateGMT = DATEADD(DAY, -FLOOR(RAND() * 1000),GETUTCDATE());
+--	SET @Price = RAND() * 100;
+--	SET @Quantity = FLOOR(RAND() * 10);
 
-	EXEC Testing.InsertContention_SingleInsert 
-		@TransactionCode = @TransactionCode, 
-		@InsertDateGMT = @InsertDateGMT, 
-		@Price = @Price, 
-		@Quantity = @Quantity;
+--	EXEC Testing.InsertContention_SingleInsert 
+--		@TransactionCode = @TransactionCode, 
+--		@InsertDateGMT = @InsertDateGMT, 
+--		@Price = @Price, 
+--		@Quantity = @Quantity;
 
-	SET @InsertCount += 1;
-END;
-GO
+--	SET @InsertCount += 1;
+--END;
+--GO
